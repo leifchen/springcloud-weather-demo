@@ -2,13 +2,14 @@ package com.chen.weather.service.impl;
 
 import com.chen.weather.service.WeatherDataService;
 import com.chen.weather.vo.WeatherResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
 
 /**
  * 天气预报数据服务实现类
@@ -16,11 +17,12 @@ import java.io.IOException;
  * @Author LeifChen
  * @Date 2019-12-04
  */
+@Slf4j
 @Service
 public class WeatherDataServiceImpl implements WeatherDataService {
 
     private static final String WEATHER_URI = "http://wthrcdn.etouch.cn/weather_mini?";
-    public static final int SUCCESS = 200;
+    private static final int SUCCESS = 200;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -47,16 +49,18 @@ public class WeatherDataServiceImpl implements WeatherDataService {
 
         ObjectMapper mapper = new ObjectMapper();
         WeatherResponse resp = null;
-        String strBody = null;
+        String strBody = "";
 
         if (respString.getStatusCodeValue() == SUCCESS) {
             strBody = respString.getBody();
         }
 
-        try {
-            resp = mapper.readValue(strBody, WeatherResponse.class);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (StringUtils.isNotBlank(strBody)) {
+            try {
+                resp = mapper.readValue(strBody, WeatherResponse.class);
+            } catch (JsonProcessingException e) {
+                log.error("解析失败！", e);
+            }
         }
 
         return resp;

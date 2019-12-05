@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ public class CityDataServiceImpl implements CityDataService {
     public List<City> listCity() throws Exception {
         // 读取XML文件
         Resource resource = new ClassPathResource("cityList.xml");
-        BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), "utf-8"));
-        StringBuffer buffer = new StringBuffer();
+        BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
+        StringBuilder buffer = new StringBuilder();
         String line;
 
         while ((line = br.readLine()) != null) {

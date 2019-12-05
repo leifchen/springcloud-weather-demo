@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class WeatherDataSyncTask {
     public void execute() {
         log.info("Weather Data Sync Task. Start！");
         // 获取城市ID列表
-        List<City> cityList = null;
+        List<City> cityList = new ArrayList<>();
 
         try {
             cityList = cityDataService.listCity();
