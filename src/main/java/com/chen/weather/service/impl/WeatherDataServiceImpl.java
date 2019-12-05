@@ -37,6 +37,11 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         return doGetWeather(uri);
     }
 
+    /**
+     * 获取天气预报数据
+     * @param uri
+     * @return
+     */
     private WeatherResponse doGetWeather(String uri) {
         ResponseEntity<String> respString = restTemplate.getForEntity(uri, String.class);
 
@@ -55,5 +60,10 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         }
 
         return resp;
+    }
+
+    @Override
+    public void syncDataByCityId(String cityId) {
+        //todo 调用 API 接口，并把返回的数据缓存到 Redis
     }
 }
