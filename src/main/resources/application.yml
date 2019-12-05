@@ -2,6 +2,10 @@ spring:
   application:
     name: springcloud-weather
 
+  # 热部署静态文件
+  thymeleaf:
+    cache: false
+
 server:
   port: 8080
 
