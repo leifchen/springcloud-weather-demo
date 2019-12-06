@@ -9,6 +9,7 @@
         <module>weather-data</module>
         <module>weather-city</module>
         <module>weather-report</module>
+        <module>weather-eureka-server</module>
     </modules>
 
     <parent>
