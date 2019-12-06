@@ -23,7 +23,7 @@ public class WeatherDataCollectionServiceImpl implements WeatherDataCollectionSe
 
     private static final String WEATHER_URI = "http://wthrcdn.etouch.cn/weather_mini?";
     private static final int SUCCESS = 200;
-    private static final long TIME_OUT = 10L;
+    private static final long TIME_OUT = 1800L;
 
     @Autowired
     private RestTemplate restTemplate;
