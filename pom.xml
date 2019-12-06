@@ -6,6 +6,7 @@
 
     <modules>
         <module>weather-collection</module>
+        <module>weather-data</module>
     </modules>
 
     <parent>
