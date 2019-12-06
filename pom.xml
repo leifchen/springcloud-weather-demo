@@ -8,6 +8,7 @@
         <module>weather-collection</module>
         <module>weather-data</module>
         <module>weather-city</module>
+        <module>weather-report</module>
     </modules>
 
     <parent>
