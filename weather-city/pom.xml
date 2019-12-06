@@ -14,4 +14,12 @@
     <name>weather-city</name>
     <description>城市数据API微服务</description>
 
+    <dependencies>
+        <!-- Eureka-Client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

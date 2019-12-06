@@ -2,6 +2,7 @@ package com.chen.weather.collection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @Author LeifChen
  * @Date 2019-12-06
  */
+@EnableDiscoveryClient
 @EnableScheduling
 @SpringBootApplication
 public class WeatherCollectionApp {
