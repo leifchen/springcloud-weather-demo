@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: weather-city
+
+server:
+  port: 9002
