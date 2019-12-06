@@ -9,22 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>weather-report</artifactId>
+    <artifactId>weather-eureka-server</artifactId>
 
-    <name>weather-report</name>
-    <description>天气预报微服务</description>
+    <name>weather-euraka-server</name>
+    <description>天气项目的Eureka服务注册中心</description>
 
     <dependencies>
-        <!-- Thymeleaf -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!-- Eureka-Client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
 
