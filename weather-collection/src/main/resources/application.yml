@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: weather-collection
+  redis:
+    host: 192.168.33.100
+    port: 6379
+
+server:
+  port: 8081
+
+# 天气数据收集同步时间
+weather:
+  quartz:
+#    refresh: 0 0 0/1 * * ?
+    refresh: 0 0/1 * * * ?
