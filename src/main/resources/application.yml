@@ -2,5 +2,14 @@ spring:
   application:
     name: springcloud-weather
 
+  # 热部署静态文件
+  thymeleaf:
+    cache: false
+
 server:
   port: 8080
+
+# 天气预报数据同步时间
+weather:
+  quartz:
+    refresh: 0 0 0/1 * * ?
