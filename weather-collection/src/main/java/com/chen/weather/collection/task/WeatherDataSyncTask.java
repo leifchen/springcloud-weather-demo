@@ -1,5 +1,6 @@
 package com.chen.weather.collection.task;
 
+import com.chen.weather.collection.service.CityClient;
 import com.chen.weather.collection.service.WeatherDataCollectionService;
 import com.chen.weather.collection.vo.City;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,8 @@ public class WeatherDataSyncTask {
 
     @Autowired
     private WeatherDataCollectionService weatherDataCollectionService;
+    @Autowired
+    private CityClient cityClient;
 
     @Scheduled(cron = "${weather.quartz.refresh:0 0 0/1 * * ?}")
     public void execute() {
@@ -29,10 +32,12 @@ public class WeatherDataSyncTask {
         // 获取城市ID列表
         List<City> cityList = new ArrayList<>();
 
-        // todo 由城市数据 API 微服务提供数据
-        City city1 = new City();
-        city1.setCityId("101280101");
-        cityList.add(city1);
+        // 由城市数据 API 微服务提供数据
+        try {
+            cityList = cityClient.listCity();
+        } catch (Exception e) {
+            log.error("获取城市列表失败！", e);
+        }
 
         // 遍历城市ID获取天气
         for (City city : cityList) {

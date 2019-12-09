@@ -3,6 +3,7 @@ package com.chen.weather.report;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 天气预报微服务
@@ -10,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @Author LeifChen
  * @Date 2019-12-06
  */
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WeatherReportApp {

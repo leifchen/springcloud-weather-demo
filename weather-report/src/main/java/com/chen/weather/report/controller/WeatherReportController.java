@@ -1,5 +1,6 @@
 package com.chen.weather.report.controller;
 
+import com.chen.weather.report.service.CityClient;
 import com.chen.weather.report.service.WeatherReportService;
 import com.chen.weather.report.vo.City;
 import lombok.extern.slf4j.Slf4j;
@@ -27,20 +28,18 @@ public class WeatherReportController {
 
     @Autowired
     private WeatherReportService weatherReportService;
+    @Autowired
+    private CityClient cityClient;
 
     @GetMapping("/cityId/{cityId}")
     public ModelAndView getReportByCityId(@PathVariable("cityId") String cityId, Model model) {
-        List<City> cityList = null;
+        List<City> cityList = new ArrayList<>();
 
         try {
-            // todo 改为由城市数据 API 微服务来提供数据
-            cityList = new ArrayList<>();
-            City city = new City();
-            city.setCityId("101280601");
-            city.setCityName("深圳");
-            cityList.add(city);
+            // 由城市数据 API 微服务来提供数据
+            cityList = cityClient.listCity();
         } catch (Exception e) {
-            log.error("Exception!", e);
+            log.error("获取城市列表失败!", e);
         }
 
         model.addAttribute("title", "天气预报");
