@@ -14,7 +14,7 @@ import java.util.List;
  * @Author LeifChen
  * @Date 2019-12-09
  */
-@FeignClient(name = "weather-gateway")
+@FeignClient(name = "weather-gateway", fallback = DataClientFallback.class)
 public interface DataClient {
 
     /**

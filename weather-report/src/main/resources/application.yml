@@ -20,3 +20,5 @@ feign:
       feignName:
         connectTimeout: 5000
         readTimeout: 5000
+  hystrix:
+    enabled: true
