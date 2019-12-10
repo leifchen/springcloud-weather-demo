@@ -23,7 +23,10 @@ public class WeatherReportServiceImpl implements WeatherReportService {
     public Weather getDataByCityId(String cityId) {
         // 由数据服务API来提供
         WeatherResponse resp = dataClient.getDataByCityId(cityId);
-        Weather data = resp.getData();
+        Weather data = null;
+        if (resp != null) {
+            data = resp.getData();
+        }
         return data;
     }
 }
