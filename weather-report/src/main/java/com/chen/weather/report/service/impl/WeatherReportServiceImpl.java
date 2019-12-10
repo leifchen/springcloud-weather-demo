@@ -1,6 +1,6 @@
 package com.chen.weather.report.service.impl;
 
-import com.chen.weather.report.service.WeatherDataClient;
+import com.chen.weather.report.service.DataClient;
 import com.chen.weather.report.service.WeatherReportService;
 import com.chen.weather.report.vo.Weather;
 import com.chen.weather.report.vo.WeatherResponse;
@@ -17,12 +17,12 @@ import org.springframework.stereotype.Service;
 public class WeatherReportServiceImpl implements WeatherReportService {
 
     @Autowired
-    private WeatherDataClient weatherDataClient;
+    private DataClient dataClient;
 
     @Override
     public Weather getDataByCityId(String cityId) {
-        // 由天气数据 API 微服务来提供
-        WeatherResponse resp = weatherDataClient.getDataByCityId(cityId);
+        // 由数据服务API来提供
+        WeatherResponse resp = dataClient.getDataByCityId(cityId);
         Weather data = resp.getData();
         return data;
     }
