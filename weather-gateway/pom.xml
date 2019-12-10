@@ -11,7 +11,7 @@
 
     <artifactId>weather-gateway</artifactId>
 
-    <name>weather-report</name>
+    <name>weather-gateway</name>
     <description>天气预报微服务</description>
 
     <dependencies>
